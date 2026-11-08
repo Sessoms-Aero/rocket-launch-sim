@@ -20,3 +20,15 @@ drag_coefficient = float(input("Drag coefficient: "))
 dry_mass = dry_mass / 1000
 fuel_mass = fuel_mass / 1000
 diameter = diameter / 100
+
+total_mass = dry_mass + fuel_mass
+burn_rate = fuel_mass / burn_time
+cross_section_area = math.pi * ((diameter / 2)**2)
+liftoff_weight = total_mass * GRAVITY
+
+if thrust <= liftoff_weight:
+    print("Your thrust is not big enough for liftoff weight")
+    sys.exit()
+else:
+    ratio = thrust / liftoff_weight
+    print(f"Thrust-to-weight ratio: {ratio:.1f}")
