@@ -22,7 +22,7 @@ current_mass = DRY_MASS + FUEL_MASS # the combined mass of the rocket itself and
 while velocity >= 0 and time < MAX_SIM_TIME:                                # keep drawing while the rocket is still climbing (and under the time cap)
     if time < BURN_TIME:                                                    # 1. motor on while time is under burn time, off after
         current_thrust = THRUST
-        current_mass = max(DRY_MASS, current_mass - BURN_RATE * TIME_STEP)  # 2. making the fuel burn over time
+        current_mass = max(DRY_MASS, current_mass - BURN_RATE * TIME_STEP)  # 2. burn this page's fuel (nev er below dry mass)
     else:
         current_thrust = 0
     weight = current_mass * GRAVITY                                         # 3. weight = gravity's pull on the rocket (N)
@@ -35,4 +35,4 @@ while velocity >= 0 and time < MAX_SIM_TIME:                                # ke
 # --- Last page ---
 print(f"Max height is {altitude:.2f} m")
 print(f"Time is {time:.2f} s")
-print(f"The final mass is {current_mass:.2f} kg")
+print(f"The final mass is {current_mass:.3f} kg")
